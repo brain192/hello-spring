@@ -3,19 +3,24 @@ package hello.hello_spring.service;
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    /*
+    //private final MemberRepository memberRepository = new MemoryMemberRepository();
+
     private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository memberRepository)
-        this.MemberRepository = memberRepository;
+    //생성자에 @Autowired 를 사용하면 객체 생성 시점에 스프링 컨테이너에서 해당 스프링 빈을 찾아서
+    // 주입한다. 생성자가 1개만 있으면 @Autowired 는 생략할 수 있다.
+    @Autowired
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
 
-    } 
+    }
+    /*
     public 중복생성으로 오류가 계속남 12장 15분 파트
      */
 
